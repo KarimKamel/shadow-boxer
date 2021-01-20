@@ -1,9 +1,9 @@
-import Container from "./Container";
+import ObjectContainer from "./ObjectContainer";
 
 function App() {
   return (
     <div>
-      <Container />
+      <ObjectContainer />
     </div>
   );
 }
