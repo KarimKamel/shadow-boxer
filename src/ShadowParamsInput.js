@@ -1,6 +1,6 @@
 import React from "react";
 import InputSlider from "./InputSlider";
-import { HuePicker } from "react-color";
+import {  SketchPicker } from "react-color";
 import { Grid } from "@material-ui/core";
 
 export default function ShadowParamsInput({
@@ -21,7 +21,7 @@ export default function ShadowParamsInput({
         <InputSlider
           params={shadowSliderParams}
           name="hOffset"
-          label="horizonatal offset"
+          label="X-offset"
           handleOnChange={(event, value, name) =>
             handleValueChange(event, value, name, index)
           }
@@ -30,7 +30,7 @@ export default function ShadowParamsInput({
         <InputSlider
           params={shadowSliderParams}
           name="vOffset"
-          label="vertical offset"
+          label="Y-offset"
           handleOnChange={(event, value, name) =>
             handleValueChange(event, value, name, index)
           }
@@ -55,13 +55,13 @@ export default function ShadowParamsInput({
         />
       </Grid>
 
-      <Grid container>
+      
         <Grid item xs={6}>
-          <HuePicker
+          <SketchPicker
             color={color}
             onChange={(color) => handleColorChange(color, index)}
           />
-        </Grid>
+        
       </Grid>
     </Grid>
   );
