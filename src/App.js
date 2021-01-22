@@ -1,11 +1,11 @@
-import ObjectContainer from "./ObjectContainer";
+import ObjectContainer from './ObjectContainer';
 
 function App() {
-  return (
-    <div>
-      <ObjectContainer />
-    </div>
-  );
+	return (
+		<div>
+			<ObjectContainer />
+		</div>
+	);
 }
 
 export default App;
