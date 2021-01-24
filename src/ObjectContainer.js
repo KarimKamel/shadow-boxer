@@ -8,10 +8,37 @@ import ShadowParamsInput from './ShadowParamsInput';
 import TabPanel from './TabPanel';
 import CloseIcon from '@material-ui/icons/Close';
 import AddIcon from '@material-ui/icons/Add';
-
+import AppBar from '@material-ui/core/AppBar';
 import ObjectWithShadow from './ObjectWithShadow';
+import Card from '@material-ui/core/Card';
+import CardActions from '@material-ui/core/CardActions';
+import CardContent from '@material-ui/core/CardContent';
+
+const makeShadowString = (shadow, color) => {
+	let shadowString = '';
+	let colorString = '';
+	for (let i = 0; i < shadow.length; i++) {
+		shadow[i].hOffset = shadow[i].hOffset || 10;
+		shadow[i].vOffset = shadow[i].vOffset || 10;
+		shadow[i].blur = shadow[i].blur || 10;
+		shadow[i].spread = shadow[i].spread || 10;
+		if (color[i]) {
+			let { r, g, b, a } = color[i];
+			colorString = `rgba(${r},${g},${b},${a})`;
+		} else {
+			colorString = `rgba(0,0,0,0.5})`;
+		}
+
+		shadowString += `${shadow[i].hOffset}px ${shadow[i].vOffset}px ${shadow[i].blur}px ${shadow[i].spread}px ${colorString}`;
+		if (i < shadow.length - 1) {
+			shadowString += ',';
+		}
+	}
+	return shadowString;
+};
 
 const useStyles = createUseStyles({
+	root: {},
 	gridRoot: {
 		display: 'flex',
 		flexDirection: 'row',
@@ -52,20 +79,22 @@ const useStyles = createUseStyles({
 			},
 		},
 	},
-	object: {
-		margin: '5rem auto',
-		backgroundColor: 'red',
-		width: '200px',
-		height: '200px',
-		boxShadow: (shadow) => shadow,
+	shadowStringDisplay: {
+		marginTop: '2rem !important',
 	},
+	// cardContent: {
+	// 	display: 'flex',
+	// 	width: '100vw',
+	// },
 });
 
 export default function ObjectContainer({ children, ...props }) {
 	const [shadow, setShadow] = useState([{}]);
 	const [value, setValue] = useState(0);
 	const [color, setColor] = useState([{ r: 0, g: 0, b: 0, a: '0.5' }]);
-	const [shadowText, setShadowText] = useState('');
+	const [shadowString, setShadowString] = useState(
+		makeShadowString(shadow, color),
+	);
 
 	const handleValueChange = (e, value, name, index) => {
 		let shadowClone = [...shadow];
@@ -93,10 +122,6 @@ export default function ObjectContainer({ children, ...props }) {
 	};
 
 	const handleColorChange = (value, index) => {
-		console.log(value, index);
-		const { r, g, b, a } = value.rgb;
-		shadow[index].color = `rgb(${r},${g},${b},${a})`;
-		setShadow([...shadow]);
 		const colorClone = [...color];
 		colorClone[index] = value.rgb;
 		setColor([...colorClone]);
@@ -105,78 +130,98 @@ export default function ObjectContainer({ children, ...props }) {
 		setValue(newValue);
 	};
 
+	useEffect(() => {
+		const shadowString = makeShadowString(shadow, color);
+		setShadowString(shadowString);
+	}, [shadow, color]);
+
 	return (
-		<Container>
+		<Container className={classes.root}>
 			<Typography variant='h3' align='center' gutterBottom>
 				the shadow boxer
 			</Typography>
-			<Grid container className={classes.gridRoot} spacing={3}>
-				<Grid item xs={6}>
-					<Tabs
-						value={value}
-						onChange={handleTabChange}
-						variant='fullWidth'
-						indicatorColor='primary'
-						textColor='primary'
-						aria-label='icon tabs example'
-					>
-						{shadow.map((s, i) => (
-							<Tab
-								key={i}
-								className={classes.tab}
-								classes={{
-									wrapper: classes.tabWrapper,
-									root: classes.tabRoot,
-									labelIcon: classes.tabLabelIcon,
-								}}
-								label={<span>{i}</span>}
-								icon={
-									<CloseIcon
-										onClick={(event) => handleCloseIconClick(event, i)}
+			<Card>
+				<CardContent className={classes.cardContent}>
+					<Grid container className={classes.gridRoot} spacing={3}>
+						<Grid item xs={6}>
+							<Tabs
+								value={value}
+								onChange={handleTabChange}
+								variant='fullWidth'
+								indicatorColor='primary'
+								textColor='primary'
+								aria-label='icon tabs example'
+							>
+								{shadow.map((s, i) => (
+									<Tab
+										key={i}
+										className={classes.tab}
+										classes={{
+											wrapper: classes.tabWrapper,
+											root: classes.tabRoot,
+											labelIcon: classes.tabLabelIcon,
+										}}
+										label={<span>{i}</span>}
+										icon={
+											<CloseIcon
+												onClick={(event) => handleCloseIconClick(event, i)}
+											/>
+										}
 									/>
-								}
-							/>
-						))}
-						{shadow.length < 3 && (
-							<Tab
-								classes={{
-									wrapper: classes.tabWrapper,
-									root: classes.tabRoot,
-									labelIcon: classes.tabLabelIcon,
-								}}
-								label={'add a shadow'}
-								onClick={(event) => handleNewIconClick(event)}
-								icon={<AddIcon />}
-							></Tab>
-						)}
-					</Tabs>
+								))}
+								{shadow.length < 3 && (
+									<Tab
+										classes={{
+											wrapper: classes.tabWrapper,
+											root: classes.tabRoot,
+											labelIcon: classes.tabLabelIcon,
+										}}
+										label={'add a shadow'}
+										onClick={(event) => handleNewIconClick(event)}
+										icon={<AddIcon />}
+									></Tab>
+								)}
+							</Tabs>
+							{shadow.map((s, i) => (
+								<TabPanel key={i} value={value} index={i}>
+									<ShadowParamsInput
+										key={i}
+										index={i}
+										color={color[i]}
+										handleValueChange={handleValueChange}
+										handleColorChange={handleColorChange}
+									/>
+								</TabPanel>
+							))}
+						</Grid>{' '}
+						<Grid item xs={6} className={classes.gridItem}>
+							{/* <Grid className={classes.innerGridContainer} container>
+								<Grid item>
+									<ObjectWithShadow shadow={shadow} color={color} />
+								</Grid>
+								<Grid item>
+									<Typography variant='h6' align='center'>
+										{shadowText}
+									</Typography>
+								</Grid>
+							</Grid> */}
 
-					{shadow.map((s, i) => (
-						<TabPanel key={i} value={value} index={i}>
-							<ShadowParamsInput
-								key={i}
-								index={i}
-								color={color[i]}
-								handleValueChange={handleValueChange}
-								handleColorChange={handleColorChange}
-							/>
-						</TabPanel>
-					))}
-				</Grid>{' '}
-				<Grid item xs={6} className={classes.gridItem}>
-					<Grid className={classes.innerGridContainer} container>
-						<Grid item>
-							{/* <ObjectWithShadow shadow={shadow} color={color} /> */}
-							<ObjectWithShadow shadow={shadow} color={color} />
-						</Grid>
-						<Grid item>
-							<Typography variant='h6' align='center'>
-								{shadowText}
+							<ObjectWithShadow shadowString={shadowString} />
+						</Grid>{' '}
+					</Grid>
+					<Grid container>
+						<Grid item xs={12}>
+							<Typography
+								classes={{ root: classes.shadowStringDisplay }}
+								// className={classes.shadowStringDisplay}
+								align='center'
+							>
+								{shadowString}
 							</Typography>
 						</Grid>
 					</Grid>
-				</Grid>
-			</Grid>
+				</CardContent>
+			</Card>
 		</Container>
 	);
 }

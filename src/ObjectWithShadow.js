@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { createUseStyles } from 'react-jss';
 const useStyles = createUseStyles({
 	object: {
-		margin: '5rem auto',
+		margin: 'auto',
 		backgroundColor: 'red',
 		width: '200px',
 		height: '200px',
@@ -10,7 +10,7 @@ const useStyles = createUseStyles({
 	},
 });
 
-export default function ObjectWithShadow({ shadow, color }) {
+export default function ObjectWithShadow({ shadow, color, shadowString }) {
 	const makeShadowString = (shadow, color) => {
 		let shadowString = '';
 		let colorString = '';
@@ -23,8 +23,7 @@ export default function ObjectWithShadow({ shadow, color }) {
 				let { r, g, b, a } = color[i];
 				colorString = `rgba(${r},${g},${b},${a})`;
 			} else {
-				let { r, g, b, a } = { r: 0, g: 0, b: 0, a: 0.5 };
-				colorString = `rgba(${r},${g},${b},${a})`;
+				colorString = `rgba(0,0,0,0.5})`;
 			}
 
 			shadowString += `${shadow[i].hOffset}px ${shadow[i].vOffset}px ${shadow[i].blur}px ${shadow[i].spread}px ${colorString}`;
@@ -35,6 +34,7 @@ export default function ObjectWithShadow({ shadow, color }) {
 		return shadowString;
 	};
 
-	const classes = useStyles(makeShadowString(shadow, color));
+	// const classes = useStyles(makeShadowString(shadow, color));
+	const classes = useStyles(shadowString);
 	return <div className={classes.object}></div>;
 }
