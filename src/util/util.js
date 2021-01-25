@@ -1,7 +1,10 @@
 const makeRandomShadow = () => {
-	const base = 10;
-	const hOffset = Math.floor(base * Math.random()) + 1;
-	const vOffset = Math.floor(base * Math.random()) + 1;
+	const base = 15;
+
+	const hOffset =
+		(Math.floor(base * Math.random()) + 1) * (Math.random() < 0.5 ? -1 : 1);
+	const vOffset =
+		(Math.floor(base * Math.random()) + 1) * (Math.random() < 0.5 ? -1 : 1);
 	const blur = Math.floor(base * Math.random()) + 1;
 	const spread = Math.floor(base * Math.random()) + 1;
 	return { spread, blur, hOffset, vOffset };
@@ -13,7 +16,7 @@ const makeRandomColor = () => {
 	const r = Math.floor(Math.random() * colorBase);
 	const g = Math.floor(Math.random() * colorBase);
 	const b = Math.floor(Math.random() * colorBase);
-	const a = Math.floor(Math.random() * 10) / 10;
+	const a = (Math.floor(Math.random() * 10) + 1) / 10;
 	return { r, g, b, a };
 };
 

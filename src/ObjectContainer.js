@@ -20,7 +20,7 @@ import useStyles from './styles/ObjectContainerStyles';
 export default function ObjectContainer() {
 	const [shadow, setShadow] = useState([makeRandomShadow()]);
 	const [tabValue, setTabValue] = useState(0);
-	const [color, setColor] = useState([{ r: 0, g: 0, b: 0, a: '0.5' }]);
+	const [color, setColor] = useState([makeRandomColor()]);
 	const [shadowString, setShadowString] = useState(
 		makeShadowString(shadow, color),
 	);
@@ -47,8 +47,8 @@ export default function ObjectContainer() {
 		setTabValue(newValue);
 	};
 	const handleNewIconClick = (event, index) => {
-		setShadow([...shadow, {}]);
-		setColor([...color, { r: 0, g: 0, b: 0, a: 0.5 }]);
+		setShadow([...shadow, makeRandomShadow()]);
+		setColor([...color, makeRandomColor()]);
 	};
 
 	const handleColorChange = (value, index) => {
