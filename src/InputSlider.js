@@ -1,16 +1,16 @@
-import React from "react";
-import { makeStyles } from "@material-ui/core/styles";
-import Typography from "@material-ui/core/Typography";
-import Slider from "@material-ui/core/Slider";
+import React from 'react';
+import { makeStyles } from '@material-ui/core/styles';
+import Typography from '@material-ui/core/Typography';
+import Slider from '@material-ui/core/Slider';
 
 const useStyles = makeStyles((theme) => ({
-  root: {
-    width: "100%",
-    marginTop:"0.9rem"
-  },
-  margin: {
-    height: theme.spacing(3),
-  },
+	root: {
+		width: '100%',
+		marginTop: '0.9rem',
+	},
+	margin: {
+		height: theme.spacing(3),
+	},
 }));
 
 // const marks = [
@@ -40,34 +40,33 @@ const useStyles = makeStyles((theme) => ({
 // ];
 
 function valuetext(value) {
-  return `${value}px`;
+	return `${value}px`;
 }
 
 export default function InputSlider(props) {
-  const classes = useStyles();
-  const { maxVal, minVal, defaultVal } = props.params;
-  const { label, name } = props;
-  const { handleOnChange } = props;
+	const classes = useStyles();
+	const { maxVal, minVal } = props.params;
+	const { label, name, value, handleOnChange } = props;
 
-  return (
-    <div className={classes.root}>
-      <Typography id="discrete-slider-custom" gutterBottom>
-        {label}
-      </Typography>
-      <Slider
-        name={name}
-        defaultValue={defaultVal}
-        min={minVal}
-        max={maxVal}
-        onChange={(e, v) => {
-          handleOnChange(e, v, name);
-        }}
-        getAriaValueText={valuetext}
-        aria-labelledby="discrete-slider-custom"
-        step={1}
-        valueLabelDisplay="auto"
-        // marks={marks}  
-      />
-    </div>
-  );
+	return (
+		<div className={classes.root}>
+			<Typography id='discrete-slider-custom' gutterBottom>
+				{label}
+			</Typography>
+			<Slider
+				name={name}
+				value={value}
+				min={minVal}
+				max={maxVal}
+				onChange={(e, v) => {
+					handleOnChange(e, v, name);
+				}}
+				getAriaValueText={valuetext}
+				aria-labelledby='discrete-slider-custom'
+				step={1}
+				valueLabelDisplay='auto'
+				// marks={marks}
+			/>
+		</div>
+	);
 }
