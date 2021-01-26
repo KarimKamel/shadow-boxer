@@ -1,6 +1,15 @@
 import { createUseStyles } from 'react-jss';
 
 const useStyles = createUseStyles({
+	titleCard: {
+		width: 'fit-content',
+		margin: 'auto',
+		paddingLeft: '4rem',
+		paddingRight: '4rem',
+	},
+	cardRoot: {
+		backgroundColor: 'aliceblue !important',
+	},
 	gridRoot: {
 		display: 'flex',
 		flexDirection: 'row',
@@ -8,12 +17,14 @@ const useStyles = createUseStyles({
 
 	gridItem: {
 		// margin: 'auto !important',
-		backgroundColor: 'aliceblue',
+		// backgroundColor: 'aliceblue',
 		display: 'flex',
 		flexDirection: 'column',
 	},
 
-	cardContent: { padding: '0 !important' },
+	cardContent: {
+		padding: '0 !important',
+	},
 	tabLabelIcon: {
 		minHeight: '0px !important',
 		// backgroundColor: 'blue !important',
