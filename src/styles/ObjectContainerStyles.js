@@ -48,8 +48,11 @@ const useStyles = createUseStyles({
 	tabIndicator: {
 		backgroundColor: 'unset !important	',
 	},
+	ShadowStringContainer: {
+		padding: '1rem !important',
+	},
 	shadowStringDisplay: {
-		marginTop: '2rem !important',
+		// marginTop: '2rem !important',
 		fontFamily: 'Courier New, monospace !important',
 	},
 });

@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
 import Container from '@material-ui/core/Container';
+import Box from '@material-ui/core/Box';
 import { Grid, Typography } from '@material-ui/core';
 import ShadowParamsInput from './ShadowParamsInput';
 import TabPanel from './TabPanel';
@@ -14,8 +15,8 @@ import {
 	makeShadowString,
 	makeRandomColor,
 	makeRandomShadow,
-} from './util/util';
-import useStyles from './styles/ObjectContainerStyles';
+} from '../util/util';
+import useStyles from '../styles/ObjectContainerStyles';
 
 export default function ObjectContainer() {
 	const [shadow, setShadow] = useState([makeRandomShadow()]);
@@ -69,9 +70,12 @@ export default function ObjectContainer() {
 		<Container className={classes.root}>
 			{console.log(makeRandomShadow())}
 			{console.log(makeRandomColor())}
-			<Typography variant='h3' align='center' gutterBottom>
-				the shadow boxer
-			</Typography>
+			<Box m={6}>
+				<Typography variant='h3' align='center' gutterBottom>
+					the shadow boxer
+				</Typography>
+			</Box>
+
 			<Card>
 				<CardContent className={classes.cardContent} variant='outlined'>
 					<Grid container className={classes.gridRoot}>
@@ -136,12 +140,24 @@ export default function ObjectContainer() {
 					</Grid>
 					<Grid container>
 						<Grid item xs={12} className={classes.gridItem}>
-							<Typography
-								classes={{ root: classes.shadowStringDisplay }}
-								align='center'
-							>
-								{shadowString}
-							</Typography>
+							<Box mt={5} mb={0} ml={3}>
+								<Typography variant='h6'>
+									{' '}
+									Use the String below to achieve this effect:
+								</Typography>
+							</Box>
+							<Box m={2}>
+								<Card>
+									<CardContent className={classes.ShadowStringContainer}>
+										<Typography
+											classes={{ root: classes.shadowStringDisplay }}
+											align='center'
+										>
+											{shadowString}
+										</Typography>
+									</CardContent>
+								</Card>
+							</Box>
 						</Grid>
 					</Grid>
 				</CardContent>

@@ -1,43 +1,7 @@
 import React from 'react';
-import { makeStyles } from '@material-ui/core/styles';
 import Typography from '@material-ui/core/Typography';
 import Slider from '@material-ui/core/Slider';
-
-const useStyles = makeStyles((theme) => ({
-	root: {
-		width: '100%',
-		marginTop: '0.9rem',
-	},
-	margin: {
-		height: theme.spacing(3),
-	},
-}));
-
-// const marks = [
-//   {
-//     value: -50,
-//     label: "-50px",
-//   },
-
-//   {
-//     value: -25,
-//     label: "-25px",
-//   },
-//   {
-//     value: 0,
-//     label: "0px",
-//   },
-
-//   {
-//     value: 25,
-//     label: "25px",
-//   },
-
-//   {
-//     value: 50,
-//     label: "50px",
-//   },
-// ];
+import useStyles from '../styles/InputSliderStyles';
 
 function valuetext(value) {
 	return `${value}px`;
