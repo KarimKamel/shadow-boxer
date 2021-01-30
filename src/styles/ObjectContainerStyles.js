@@ -1,6 +1,9 @@
 import { createUseStyles } from 'react-jss';
 
 const useStyles = createUseStyles({
+	root: {
+		minWidth: '1020px',
+	},
 	titleCard: {
 		width: 'fit-content',
 		margin: 'auto',
@@ -16,8 +19,6 @@ const useStyles = createUseStyles({
 	},
 
 	gridItem: {
-		// margin: 'auto !important',
-		// backgroundColor: 'aliceblue',
 		display: 'flex',
 		flexDirection: 'column',
 	},
@@ -27,19 +28,18 @@ const useStyles = createUseStyles({
 	},
 	tabLabelIcon: {
 		minHeight: '0px !important',
-		// backgroundColor: 'blue !important',
 		padding: '0 !important',
 	},
 	selected: {
 		backgroundColor: '#b4b0e3 !important',
-		borderRadius: '0.3rem !important',
 	},
 	tabRoot: {
 		maxWidth: '30% !important',
 		alignItems: 'flex-end !important',
 		padding: '0 !important',
-
-		// backgroundColor: 'blue !important',
+		transition: 'background-color 1s !important',
+		border: '2px solid #b4b0e3 !important',
+		borderRadius: '0.3rem !important',
 	},
 	tabWrapper: {
 		flexDirection: 'row !important',

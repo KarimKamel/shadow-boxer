@@ -78,87 +78,116 @@ export default function ObjectContainer() {
 								</Typography>
 							</Card>
 						</Box>
+						<Box m={3}>
+							<Grid container className={classes.gridRoot}>
+								<Grid item xs={6} className={classes.gridItem}>
+									{shadow.length === 0 && (
+										<Box m={3}>
+											<ol style={{ paddingInlineStart: 0 }}>
+												<li>
+													<span>add a shadow</span>
+												</li>
+												<li>
+													<span>use sliders to modify the shadow</span>
+												</li>
 
-						<Grid container className={classes.gridRoot}>
-							<Grid item xs={6} className={classes.gridItem}>
-								<Tabs
-									classes={{
-										indicator: classes.tabIndicator,
-									}}
-									value={tabValue}
-									onChange={handleTabChange}
-									variant='fullWidth'
-									textColor='primary'
-									aria-label='icon tabs example'
-								>
-									{shadow.map((s, i) => (
-										<Tab
-											key={i}
-											className={classes.tab}
-											classes={{
-												wrapper: classes.tabWrapper,
-												root: classes.tabRoot,
-												labelIcon: classes.tabLabelIcon,
-												selected: classes.selected,
-											}}
-											label={<span>{i}</span>}
-											icon={
-												<CloseIcon
-													onClick={(event) => handleCloseIconClick(event, i)}
-												/>
-											}
-										/>
-									))}
-									{shadow.length < 3 && (
-										<Tab
-											classes={{
-												wrapper: classes.tabWrapper,
-												root: classes.tabRoot,
-												labelIcon: classes.tabLabelIcon,
-											}}
-											label={'add a shadow'}
-											onClick={(event) => handleNewIconClick(event)}
-											icon={<AddIcon />}
-										></Tab>
+												<li>
+													<span>add more shadows!</span>
+												</li>
+												<li>
+													<span>
+														copy and paste the generated string into your css
+													</span>
+												</li>
+											</ol>
+										</Box>
 									)}
-								</Tabs>
-								{shadow.map((s, i) => (
-									<TabPanel key={i} value={tabValue} index={i}>
-										<ShadowParamsInput
-											key={i}
-											shadow={shadow[i]}
-											index={i}
-											color={color[i]}
-											handleValueChange={handleValueChange}
-											handleColorChange={handleColorChange}
-										/>
-									</TabPanel>
-								))}
-							</Grid>{' '}
-							<Grid item xs={6} className={classes.gridItem}>
-								<ObjectWithShadow shadowString={shadowString} />
-							</Grid>{' '}
-						</Grid>
+									<Tabs
+										classes={{
+											indicator: classes.tabIndicator,
+										}}
+										value={tabValue}
+										onChange={handleTabChange}
+										variant='fullWidth'
+										textColor='primary'
+										aria-label='icon tabs example'
+									>
+										{shadow.length > 0 &&
+											shadow.map((s, i) => (
+												<Tab
+													key={i}
+													// className={classes.tab}
+													classes={{
+														wrapper: classes.tabWrapper,
+														root: classes.tabRoot,
+														labelIcon: classes.tabLabelIcon,
+														selected: classes.selected,
+													}}
+													label={<span>{i}</span>}
+													icon={
+														<CloseIcon
+															onClick={(event) =>
+																handleCloseIconClick(event, i)
+															}
+														/>
+													}
+												/>
+											))}
+										{shadow.length < 3 && (
+											<Tab
+												classes={{
+													wrapper: classes.tabWrapper,
+													root: classes.tabRoot,
+													labelIcon: classes.tabLabelIcon,
+												}}
+												label={'add a shadow'}
+												onClick={(event) => handleNewIconClick(event)}
+												icon={<AddIcon />}
+											></Tab>
+										)}
+									</Tabs>
+									{shadow.map((s, i) => (
+										<TabPanel key={i} value={tabValue} index={i}>
+											<ShadowParamsInput
+												key={i}
+												shadow={shadow[i]}
+												index={i}
+												color={color[i]}
+												handleValueChange={handleValueChange}
+												handleColorChange={handleColorChange}
+											/>
+										</TabPanel>
+									))}
+								</Grid>{' '}
+								<Grid item xs={6} className={classes.gridItem}>
+									<ObjectWithShadow shadowString={shadowString} />
+								</Grid>{' '}
+							</Grid>
+						</Box>
+
 						<Grid container>
 							<Grid item xs={12} className={classes.gridItem}>
-								<Box mt={5} mb={0} ml={3}>
-									<Typography variant='h6'>
-										{' '}
-										Use the String below to achieve this effect:
-									</Typography>
-								</Box>
-								<Box m={2}>
-									<Card>
-										<CardContent className={classes.ShadowStringContainer}>
-											<Typography
-												classes={{ root: classes.shadowStringDisplay }}
-												align='center'
-											>
-												{shadowString}
+								{shadow.length > 0 && (
+									<Box m={2}>
+										<Box mt={5} mb={0} ml={3}>
+											<Typography variant='h6'>
+												{' '}
+												Use the String below to achieve this effect:
 											</Typography>
-										</CardContent>
-									</Card>
-								</Box>
+										</Box>
+
+										<Card>
+											<CardContent className={classes.ShadowStringContainer}>
+												<Typography
+													classes={{ root: classes.shadowStringDisplay }}
+													align='center'
+												>
+													{shadowString}
+												</Typography>
+											</CardContent>
+										</Card>
+									</Box>
+								)}
 							</Grid>
 						</Grid>
 					</CardContent>
