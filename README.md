@@ -5,4 +5,4 @@ When generating a shadow the application generates a string that can be used wit
 achieve the same appearance obtained with the GUI
 
 
-visit: https://karimkamel.github.io/visual-shadows/ to try the application
+visit: https://karimkamel.github.io/shadow-boxer/ to try the application
