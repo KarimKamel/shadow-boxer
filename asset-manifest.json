@@ -1,26 +1,26 @@
 {
   "files": {
-    "main.css": "/visual-shadows/static/css/main.2ae47eeb.chunk.css",
-    "main.js": "/visual-shadows/static/js/main.ca80632f.chunk.js",
-    "main.js.map": "/visual-shadows/static/js/main.ca80632f.chunk.js.map",
-    "runtime-main.js": "/visual-shadows/static/js/runtime-main.def9e6b7.js",
-    "runtime-main.js.map": "/visual-shadows/static/js/runtime-main.def9e6b7.js.map",
-    "static/css/2.b73f0384.chunk.css": "/visual-shadows/static/css/2.b73f0384.chunk.css",
-    "static/js/2.5c6c58bb.chunk.js": "/visual-shadows/static/js/2.5c6c58bb.chunk.js",
-    "static/js/2.5c6c58bb.chunk.js.map": "/visual-shadows/static/js/2.5c6c58bb.chunk.js.map",
-    "static/js/3.c2800cc8.chunk.js": "/visual-shadows/static/js/3.c2800cc8.chunk.js",
-    "static/js/3.c2800cc8.chunk.js.map": "/visual-shadows/static/js/3.c2800cc8.chunk.js.map",
-    "index.html": "/visual-shadows/index.html",
-    "static/css/2.b73f0384.chunk.css.map": "/visual-shadows/static/css/2.b73f0384.chunk.css.map",
-    "static/css/main.2ae47eeb.chunk.css.map": "/visual-shadows/static/css/main.2ae47eeb.chunk.css.map",
-    "static/js/2.5c6c58bb.chunk.js.LICENSE.txt": "/visual-shadows/static/js/2.5c6c58bb.chunk.js.LICENSE.txt",
-    "static/media/index.css": "/visual-shadows/static/media/roboto-vietnamese-400-normal.52cebac0.woff2"
+    "main.css": "/shadow-boxer/static/css/main.2ae47eeb.chunk.css",
+    "main.js": "/shadow-boxer/static/js/main.5536f1f7.chunk.js",
+    "main.js.map": "/shadow-boxer/static/js/main.5536f1f7.chunk.js.map",
+    "runtime-main.js": "/shadow-boxer/static/js/runtime-main.0c88fd81.js",
+    "runtime-main.js.map": "/shadow-boxer/static/js/runtime-main.0c88fd81.js.map",
+    "static/css/2.bde5d129.chunk.css": "/shadow-boxer/static/css/2.bde5d129.chunk.css",
+    "static/js/2.55a9a4ff.chunk.js": "/shadow-boxer/static/js/2.55a9a4ff.chunk.js",
+    "static/js/2.55a9a4ff.chunk.js.map": "/shadow-boxer/static/js/2.55a9a4ff.chunk.js.map",
+    "static/js/3.3df46f28.chunk.js": "/shadow-boxer/static/js/3.3df46f28.chunk.js",
+    "static/js/3.3df46f28.chunk.js.map": "/shadow-boxer/static/js/3.3df46f28.chunk.js.map",
+    "index.html": "/shadow-boxer/index.html",
+    "static/css/2.bde5d129.chunk.css.map": "/shadow-boxer/static/css/2.bde5d129.chunk.css.map",
+    "static/css/main.2ae47eeb.chunk.css.map": "/shadow-boxer/static/css/main.2ae47eeb.chunk.css.map",
+    "static/js/2.55a9a4ff.chunk.js.LICENSE.txt": "/shadow-boxer/static/js/2.55a9a4ff.chunk.js.LICENSE.txt",
+    "static/media/index.css": "/shadow-boxer/static/media/roboto-vietnamese-400-normal.52cebac0.woff2"
   },
   "entrypoints": [
-    "static/js/runtime-main.def9e6b7.js",
-    "static/css/2.b73f0384.chunk.css",
-    "static/js/2.5c6c58bb.chunk.js",
+    "static/js/runtime-main.0c88fd81.js",
+    "static/css/2.bde5d129.chunk.css",
+    "static/js/2.55a9a4ff.chunk.js",
     "static/css/main.2ae47eeb.chunk.css",
-    "static/js/main.ca80632f.chunk.js"
+    "static/js/main.5536f1f7.chunk.js"
   ]
 }
